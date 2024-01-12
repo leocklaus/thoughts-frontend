@@ -1,7 +1,46 @@
-mains {
+main {
     max-width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+nav {
+    width: 600px;
+    margin-bottom: 12px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+}
+
+li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+li:hover {
+    background-color: rgb(158, 245, 216);
+}
+
+.menu-item {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    border-bottom: 4px solid rgb(35, 226, 162) ;
 }

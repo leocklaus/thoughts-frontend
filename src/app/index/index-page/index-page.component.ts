@@ -85,7 +85,6 @@ export class IndexPageComponent implements OnInit{
 
   handleTabChange(tabId:number){
     this.activeTab = tabId;
-    console.log("mudou")
   }
 
 }

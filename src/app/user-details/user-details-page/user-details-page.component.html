@@ -1,5 +1,30 @@
 <main>
     <section class="header"></section>
-    <nav></nav>
-    <section class="content"></section>
+    <nav>
+        <ul>
+            <li *ngFor="let tab of tabs" [class.active]="activeTab == tab.id">
+                <div (click)="handleTabChange(tab.id)" class="menu-item">{{tab.name}}</div>
+            </li>
+        </ul>
+    </nav>
+    <section class="content" [ngSwitch]="activeTab">
+        <app-thoughts-display
+        *ngSwitchCase=1 
+        [content]="postsContent" 
+        [page]="postsPagination" 
+        >
+        </app-thoughts-display>
+        <app-thoughts-display
+        *ngSwitchCase=2 
+        [content]="commentsContent" 
+        [page]="commentsPagination" 
+        >
+        </app-thoughts-display>
+        <app-thoughts-display
+        *ngSwitchCase=3 
+        [content]="likesContent" 
+        [page]="likesPagination" 
+        >
+        </app-thoughts-display>
+    </section>
 </main>
