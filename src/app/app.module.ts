@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { IndexModule } from './index/index.module';
 import { SharedModule } from './shared/shared.module';
 import { UserDetailsModule } from './user-details/user-details.module';
+import { ThoughtDetailsComponent } from './thought-details/thought-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ThoughtDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IndexModule,
     SharedModule,
-    UserDetailsModule
+    UserDetailsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

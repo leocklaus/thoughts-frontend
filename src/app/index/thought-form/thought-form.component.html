@@ -1,0 +1,16 @@
+<section>
+    <div class="profile-picture">
+        <img src="../../../assets/profilepicture.jpg" alt="profile">
+    </div>
+    <form [formGroup]="thoughtForm">
+        <div class="form-content">
+            <textarea name="thought-content" formControlName="content" cols="63" rows="3" placeholder="{{formTextHoler}}"></textarea>
+        </div>
+        <div class="form-bottom">
+            <span [class.full]="checkValid()">
+                Você ainda pode utilizar {{180 - getContentSize()}} caracteres.
+            </span>
+            <button (click)="onSubmit()" [disabled]="checkValid() || getContentSize() == 0">Postar</button>
+        </div>
+    </form>
+</section>

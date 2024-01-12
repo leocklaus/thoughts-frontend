@@ -1,0 +1,47 @@
+<main>
+    <section class="thought">
+        <div class="thought-header">
+            <div class="profile-picture">
+                <img src="../../../assets/profilepicture.jpg" alt="profile">
+            </div>
+            <div class="header-text">
+                <span class="name">{{getFullName()}}</span>
+                <span class="username">{{thoughtData.username}}</span>
+            </div>
+        </div>
+        <div class="thought-content">{{thoughtData.content}}</div>
+        <div class="thought-footer">
+            <div class="date">{{thoughtData.createdAt}}</div>
+            <div class="icons">
+                <div class="icon">
+                    <ng-icon 
+                        [name]="thoughtData.likedByUser? 'bootstrapHeartFill': 'bootstrapHeart'" 
+                        class="like" 
+                        >
+                    </ng-icon>
+                    <span>{{thoughtData.likesCount}}</span>
+                </div>
+                <div class="icon">
+                    <ng-icon 
+                    name="bootstrapChat" 
+                    class="comments" 
+                    >
+                    </ng-icon>
+                <span>{{thoughtData.commentsCount}}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-thought-form
+        formTextHoler="Postar sua resposta"
+        newThoughtType="REPLY"
+        originalThoughtId="{{thoughtId}}"
+        (postEvent)="handlePostEvent($event)"
+    ></app-thought-form>
+    <app-thoughts-display class="display"
+        [content]="thoughtComments"
+        [page]="commentsPagination"
+
+    >
+    </app-thoughts-display>
+</main>

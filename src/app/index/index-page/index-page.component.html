@@ -1,0 +1,31 @@
+<main [ngSwitch]="activeTab">
+    <app-thought-form 
+        (postEvent)="handlePostEvent($event)" 
+        newThoughtType="ORIGINAL" 
+        formTextHoler="No que está pensando?"
+        originalThoughtId={{null}}
+        >
+    </app-thought-form>
+    <nav>
+        <ul>
+            <li *ngFor="let tab of tabs">
+                <div (click)="handleTabChange(tab.id)" class="menu-item">{{tab.name}}</div>
+            </li>
+        </ul>
+    </nav>
+    <app-thoughts-display 
+        *ngSwitchCase=1
+        [content]="content" 
+        [page]="page" 
+        (toogleLikeEvent)="handleLikeEvent($event)" 
+        (addNewData)="handleNewDataEvent($event)">
+    </app-thoughts-display>
+    <app-thoughts-display 
+    *ngSwitchCase=2
+    [content]="content_following" 
+    [page]="page_following" 
+    (toogleLikeEvent)="handleLikeEvent($event)" 
+    (addNewData)="handleNewDataEvent($event)">
+</app-thoughts-display>
+</main>
+

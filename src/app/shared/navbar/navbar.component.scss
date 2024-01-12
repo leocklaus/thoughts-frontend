@@ -4,6 +4,7 @@ nav {
     align-items: center;
     background-color: aqua;
     padding: 16px 32px;
+    margin-bottom: 16px;
 }
 
 ul {
@@ -15,11 +16,16 @@ a {
     text-decoration: none;
 }
 
+a.active {
+    text-decoration: underline;
+}
+
 
 li {
     list-style: none;
     padding: 4px;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 li:hover {

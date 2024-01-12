@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+nav {
+    width: 600px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+}
+
+li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.menu-item {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,49 @@
+<section>
+    <div class="content">
+        <article *ngFor="let thought of content">
+            <div class="wrapper" (click)="openThoughtDetails(thought.uuid, thought.username)">
+            <div class="profile-picture" (click)="stopPropagation($event)">
+                <a routerLink="/{{thought.username}}">
+                    <img src="../../../assets/profilepicture.jpg" alt="profile">
+                </a>
+            </div>
+            <div class="thought">
+                <div class="thought-header">
+                    <a routerLink="/{{thought.username}}">
+                        <span class="name">{{thought.firstname + " " + thought.lastname}}</span>
+                    </a>
+                    <a routerLink="/{{thought.username}}">
+                        <span class="username">{{thought.username}}</span>
+                    </a>
+                    <span class="date">8 de janeiro</span>
+                </div>
+                <div class="thought-content">
+                    {{thought.content}}
+                </div>
+            </div>
+            <div class="side-icons">
+                <div class="icons">
+                    <ng-icon 
+                        [name]="thought.likedByUser? 'bootstrapHeartFill': 'bootstrapHeart'" 
+                        class="like" 
+                        (click)="toogleLike(thought.uuid, thought.likedByUser, $event)"
+                        >
+                    </ng-icon>
+                    <span>{{thought.likesCount}}</span>
+                </div>
+                <div class="icons">
+                    <ng-icon 
+                        name="bootstrapChat" 
+                        class="comments" 
+                        (click)="stopPropagation($event)">
+                    </ng-icon>
+                    <span>{{thought.commentsCount}}</span>
+                </div>
+            </div>
+            </div>
+        </article>
+    </div>
+    <div class="pagination" [hidden]="checkLastPage()">
+        <button (click)="handleNextPage()" [disabled]="checkLastPage()">Carregar mais</button>
+    </div>
+</section>
