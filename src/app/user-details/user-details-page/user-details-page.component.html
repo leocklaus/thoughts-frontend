@@ -1,5 +1,38 @@
 <main>
-    <section class="header"></section>
+    <section class="header">
+        <div class="header-bar">
+            <div class="header-bar-arrow">
+                <ng-icon [name]="'bootstrapArrowLeft'"></ng-icon>
+            </div>
+            <div class="header-bar-content">
+                <span class="header-bar-username">@{{userDetails.username}}</span>
+                <span class="header-bar-posts-qty">{{getPostsQtyFormated()}}</span>
+            </div>
+        </div>
+        <div class="cover">
+            <div class="profile-picture">
+                <img src="../../../assets/profilepicture.jpg" alt="Profile Picture">
+            </div>
+            <div class="cover-button">
+                <button>Editar Perfil</button>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="user-info-upper">
+                <div class="user-info-name">{{getFullName()}}</div>
+                <div class="user-info-username">@{{userDetails.username}}</div>
+            </div>
+            <div class="user-info-bio">{{userDetails.bio}}</div>
+            <div class="user-info-dates">
+                <div class="user-info-birthday">Nascido em {{userDetails.birthday}}</div>
+                <div class="user-info-joined">Ingressou em 24/12/2023</div>
+            </div>
+            <div class="follows">
+                <span class="following"><span class="number">{{userDetails.follows}}</span> Seguindo</span>
+                <span class="followers"><span class="number">{{userDetails.followers}}</span> Seguidores</span>
+            </div>
+        </div>
+    </section>
     <nav>
         <ul>
             <li *ngFor="let tab of tabs" [class.active]="activeTab == tab.id">

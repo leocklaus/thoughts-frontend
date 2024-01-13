@@ -14,7 +14,7 @@ a {
 .content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    //gap: 12px;
 }
 
 .wrapper {
@@ -22,6 +22,17 @@ a {
     min-height: 80px;
     gap: 8px;
     cursor: pointer;
+}
+
+article {
+    padding: 8px;
+    padding-bottom: 0px;
+    padding-top: 16px;
+    transition: all 200ms ease-in-out;
+}
+
+article:hover {
+    background-color: rgba(238, 238, 238, 0.39);
 }
 
 .profile-picture {

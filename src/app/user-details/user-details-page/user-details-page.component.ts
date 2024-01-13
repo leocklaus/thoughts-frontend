@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { pagination } from 'src/app/models/responsePaged';
 import { tab } from 'src/app/models/tab';
 import { thought } from 'src/app/models/thought';
+import { userDetails } from 'src/app/models/userDetails';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -17,8 +19,14 @@ export class UserDetailsPageComponent implements OnInit{
   commentsPagination!: pagination;
   likesContent!: thought[];
   likesPagination!: pagination;
+  userDetails!: userDetails;
+  username!: string;
 
-  constructor(private service: UserService){}
+  constructor(private service: UserService, private route: ActivatedRoute){
+    this.route.paramMap.subscribe(params => {
+      this.ngOnInit();
+    })
+  }
 
   tabs:tab[] = [
     {
@@ -37,6 +45,11 @@ export class UserDetailsPageComponent implements OnInit{
   activeTab:number = 1
 
   ngOnInit() {
+    this.username = this.route.snapshot.paramMap.get('user') as string;
+    this.service.getUserDetails(this.username)
+    .subscribe(data => {
+      this.userDetails = data
+    })
     this.service.getUserPosts()
     .subscribe(data => {
       this.postsContent = data.content;
@@ -81,6 +94,16 @@ export class UserDetailsPageComponent implements OnInit{
 
   handleTabChange(tabId:number){
     this.activeTab = tabId;
+  }
+
+  getPostsQtyFormated(){
+    let postsQty = this.userDetails.postsCount;
+    let sufix = postsQty == 1 ? 'thought' : 'thoughts';
+    return postsQty + ` ${sufix}`
+  }
+
+  getFullName(){
+    return this.userDetails.firstName + " " + this.userDetails.lastName;
   }
 
 }
