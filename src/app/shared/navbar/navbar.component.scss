@@ -25,10 +25,44 @@ li {
     list-style: none;
     padding: 4px;
     font-size: 1.2rem;
+
+}
+
+li:not(:last-child) {
     cursor: pointer;
 }
 
-li:hover {
+li:hover:not(:last-child) {
     background-color: bisque;
     border-radius: 4px;
+}
+
+form input{
+    padding: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form input:active {
+    outline: none;
+}
+
+form .wrapper{
+    font-size: 0.8rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+form .wrapper:has(input:focus) {
+    border: 1px solid black;
 }
