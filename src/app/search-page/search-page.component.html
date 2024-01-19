@@ -1,0 +1,27 @@
+<main [ngSwitch]="activeTab">
+        <form action="search" (keyup.enter)="submit()" [formGroup]="searchForm">
+            <div class="wrapper">
+                <ng-icon [name]="'bootstrapSearch'"></ng-icon>
+                <input type="search" name="q" placeholder="Pesquisar" formControlName="search">
+            </div>
+        </form>
+        <nav>
+            <ul>
+                <li *ngFor="let tab of tabs" [class.active]="activeTab == tab.id">
+                    <div (click)="handleTabChange(tab.id)" class="menu-item">{{tab.name}}</div>
+                </li>
+            </ul>
+        </nav>
+        <app-thoughts-display class="display"
+        [content]="thoughtsContent"
+        [page]="thoughtsPage"
+        *ngSwitchCase="1"
+        >
+        </app-thoughts-display>
+        <app-user-search-details
+        *ngSwitchCase="2"
+        [content]="usersContent"
+        [page]="usersPage"
+        >
+        </app-user-search-details>
+</main>

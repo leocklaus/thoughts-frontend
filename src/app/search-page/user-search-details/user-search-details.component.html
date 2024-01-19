@@ -1,0 +1,28 @@
+<section>
+    <div class="content">
+        <article *ngFor="let user of content">
+            <div class="wrapper" (click)="openUserDetails(user.username)">
+                <div class="profile-picture" (click)="stopPropagation($event)">
+                    <a routerLink="/{{user.username}}">
+                        <img src="../../../assets/profilepicture.jpg" alt="profile">
+                    </a>
+                </div>
+                <div class="info">
+                    <div class="upper-info">
+                        <div class="user-info">
+                            <span class="name">{{getFullName(user)}}</span>
+                            <span class="username">@{{user.username}}</span>
+                        </div>
+                        <div class="follow-button">
+                            <button>Seguir</button>
+                        </div>
+                    </div>
+                    <span class="bio">{{user.bio}}</span>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="pagination" [hidden]="checkLastPage()">
+        <button (click)="handleNextPage()" [disabled]="checkLastPage()">Carregar mais</button>
+    </div>
+</section>

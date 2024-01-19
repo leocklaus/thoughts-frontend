@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs';
 import { responsePage } from 'src/app/models/responsePaged';
-import { userDetails } from 'src/app/models/userDetails';
+import { userDetails, userResponse } from 'src/app/models/userDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,14 @@ export class UserService {
   getUserDetails(username: string){
     return this.http.get<userDetails>(this.API + `/${username}`)
     .pipe(
+      take(1)
+    )
+  }
+
+  searchUser(query: string){
+    return this.http.get<userResponse>(this.API + "/search", {params: {
+      query
+    }}).pipe(
       take(1)
     )
   }

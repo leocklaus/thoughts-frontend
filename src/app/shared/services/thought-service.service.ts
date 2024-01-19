@@ -42,6 +42,14 @@ export class ThoughtServiceService {
     return this.http.get<responsePage>(this.API + `/${id}/comments`)
   }
 
+  searchThought(query: string){
+    return this.http.get<responsePage>(this.API + "/search", {params: {
+      query
+    }}).pipe(
+      take(1)
+    )
+  }
+
   getNextPage(pageNumber: number){
     return this.http.get<responsePage>(this.API + `?page=${pageNumber}`)
     .pipe(

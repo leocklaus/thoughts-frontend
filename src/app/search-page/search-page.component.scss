@@ -1,0 +1,76 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 12px;
+}
+
+form {
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    border-bottom: 1px solid rgba(146, 146, 146, 0.342);
+    color: rgba(146, 146, 146, 0.342);
+    font-size: 1.2rem;
+    display: flex;
+    gap: 8px;
+    padding: 4px;
+}
+
+.wrapper:has(input:focus){
+    border-color: black;
+    color: black;
+}
+
+form input {
+    flex: 1;
+    border: none;
+    font-size: 1rem;
+}
+
+form input:focus {
+    outline: none;
+}
+
+nav {
+    width: 600px;
+    margin-bottom: 12px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+}
+
+li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+li:hover {
+    background-color: rgb(158, 245, 216);
+}
+
+.menu-item {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    border-bottom: 4px solid rgb(35, 226, 162) ;
+}

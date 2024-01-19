@@ -7,11 +7,16 @@ import { IndexModule } from './index/index.module';
 import { SharedModule } from './shared/shared.module';
 import { UserDetailsModule } from './user-details/user-details.module';
 import { ThoughtDetailsComponent } from './thought-details/thought-details.component';
+import { SearchPageComponent } from './search-page/search-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserSearchDetailsComponent } from './search-page/user-search-details/user-search-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ThoughtDetailsComponent
+    ThoughtDetailsComponent,
+    SearchPageComponent,
+    UserSearchDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +24,7 @@ import { ThoughtDetailsComponent } from './thought-details/thought-details.compo
     IndexModule,
     SharedModule,
     UserDetailsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

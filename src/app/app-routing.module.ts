@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexPageComponent } from './index/index-page/index-page.component';
 import { UserDetailsPageComponent } from './user-details/user-details-page/user-details-page.component';
 import { ThoughtDetailsComponent } from './thought-details/thought-details.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: "search",
+    component: SearchPageComponent,
+    pathMatch: 'full'
+  },
+  {
     path: "",
     children: [{
       path: ":user",
@@ -33,7 +39,7 @@ const routes: Routes = [
       component: ThoughtDetailsComponent,
       pathMatch: 'full'
     }]
-  }
+  },
 ];
 
 @NgModule({
