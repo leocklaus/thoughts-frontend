@@ -2,11 +2,11 @@
     <section class="thought">
         <div class="thought-header">
             <div class="profile-picture">
-                <img src="../../../assets/profilepicture.jpg" alt="profile">
+                <a routerLink="/{{thoughtData.username}}"><img src="../../../assets/profilepicture.jpg" alt="profile"></a>
             </div>
             <div class="header-text">
-                <span class="name">{{getFullName()}}</span>
-                <span class="username">{{thoughtData.username}}</span>
+                <span class="name"><a routerLink="/{{thoughtData.username}}">{{getFullName()}}</a></span>
+                <span class="username"><a routerLink="/{{thoughtData.username}}">{{thoughtData.username}}</a></span>
             </div>
         </div>
         <div class="thought-content">{{thoughtData.content}}</div>
