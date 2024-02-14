@@ -2,19 +2,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { responsePage } from 'src/app/models/responsePaged';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThoughtServiceService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService:AuthService) { }
 
   private readonly API = "http://localhost:8080/api/v1/thoughts";
   private readonly API_USER = "http://localhost:8080/api/v1/users/current"
 
-  httpOptions = {
+  httpPostOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getToken()})
   }
 
   getAllThoughtsPaged(){
@@ -59,21 +64,21 @@ export class ThoughtServiceService {
 
 
   saveThought(body: String){
-    return this.http.post(this.API, body, this.httpOptions)
+    return this.http.post(this.API, body, this.httpPostOptions)
     .pipe(
       take(1)
     )
   }
 
   addLike(uuid: string){
-    return this.http.put(this.API + `/${uuid}/like`, {}, this.httpOptions)
+    return this.http.put(this.API + `/${uuid}/like`, {}, this.httpPostOptions)
     .pipe(
       take(1)
     )
   }
 
   removeLike(uuid: string){
-    return this.http.delete(this.API + `/${uuid}/like`, this.httpOptions)
+    return this.http.delete(this.API + `/${uuid}/like`, this.httpPostOptions)
     .pipe(
       take(1)
     )

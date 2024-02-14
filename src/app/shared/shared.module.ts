@@ -18,7 +18,6 @@ import { bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, b
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule,
     NgIconsModule.withIcons({ bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, bootstrapArrowLeft, bootstrapSearch })
   ],
   exports: [

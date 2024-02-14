@@ -10,13 +10,17 @@ import { ThoughtDetailsComponent } from './thought-details/thought-details.compo
 import { SearchPageComponent } from './search-page/search-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserSearchDetailsComponent } from './search-page/user-search-details/user-search-details.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorInterceptor } from './shared/auth/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThoughtDetailsComponent,
     SearchPageComponent,
-    UserSearchDetailsComponent
+    UserSearchDetailsComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -25,8 +29,11 @@ import { UserSearchDetailsComponent } from './search-page/user-search-details/us
     SharedModule,
     UserDetailsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
