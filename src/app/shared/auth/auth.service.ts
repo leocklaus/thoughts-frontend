@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs';
-import { loginData, loginOutput } from 'src/app/models/authModels';
+import { loginData, loginOutput, userRegister } from 'src/app/models/authModels';
 import { jwtDecode } from 'jwt-decode'; 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API = "http://localhost:8080/api/v1/auth";
+  private readonly API = "http://localhost:8080/api/v1";
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -43,10 +43,21 @@ export class AuthService {
 
   login(data: loginData){
     let payload = JSON.stringify(data);
-    return this.http.post<loginOutput>(`${this.API}/login`, payload, this.httpOptions)
+    return this.http.post<loginOutput>(`${this.API}/auth/login`, payload, this.httpOptions)
       .pipe(
         take(1)
       )
+  }
+
+  register(data: userRegister) {
+
+    let payload = JSON.stringify(data);
+
+    return this.http.post<loginOutput>(`${this.API}/users`, payload, this.httpOptions)
+      .pipe(
+        take(1)
+      )
+    ;
   }
 
   handleLogin(data: loginOutput){
@@ -58,6 +69,7 @@ export class AuthService {
 
   logout(){
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("expDate");
   }
 
 }

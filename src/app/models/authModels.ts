@@ -6,3 +6,16 @@ export type loginData = {
 export type loginOutput = {
     token: string,
 }
+
+export type userRegister = {
+    username: string,
+    email: string,
+    firstName: string,
+    lastName: string,
+    birthday: string,
+    password: string,
+    bio: string
+}
+
+
+

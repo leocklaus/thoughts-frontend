@@ -7,3 +7,9 @@ export const authGuard: CanActivateFn = (route, state) => {
     ? true
     : inject(Router).createUrlTree(['/login']);
 };
+
+export const loginRegisterGuard: CanActivateFn = (route, state) => {
+  return inject(AuthService).isAuthenticated()
+    ? inject(Router).createUrlTree(['/'])
+    : true;
+};

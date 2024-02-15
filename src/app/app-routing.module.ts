@@ -5,7 +5,8 @@ import { UserDetailsPageComponent } from './user-details/user-details-page/user-
 import { ThoughtDetailsComponent } from './thought-details/thought-details.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { authGuard } from './shared/auth/auth.guard';
+import { authGuard, loginRegisterGuard } from './shared/auth/auth.guard';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,12 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginPageComponent,
+    canActivate: [loginRegisterGuard]
+  },
+  {
+    path: "register",
+    component: RegisterPageComponent,
+    canActivate: [loginRegisterGuard]
   },
   {
     path: "",

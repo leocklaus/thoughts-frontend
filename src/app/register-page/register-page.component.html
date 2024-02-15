@@ -1,0 +1,22 @@
+<main>
+    <form [formGroup]="registerForm">
+        <label for="username">Nome de usuário:</label>
+        <input type="text" name="username" formControlName="username">
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" formControlName="email">
+        <label for="firstName">Nome:</label>
+        <input type="text" name="firstName" formControlName="firstName">
+        <label for="lastName">Sobrenome:</label>
+        <input type="text" name="lastName" formControlName="lastName">
+        <label for="birthday">Data de nascimento:</label>
+        <input type="text" name="birthday" formControlName="birthday">
+        <label for="password">Senha:</label>
+        <input type="password" name="password" formControlName="password">
+        <label for="checkPassword">Confirme a senha:</label>
+        <input type="password" name="checkPassword" formControlName="checkPassword">
+        <label for="bio">Bio:</label>
+        <textarea name="bio" cols="30" rows="10" formControlName="bio"></textarea>
+        <button [disabled]="checkInvalid()" (click)="onSubmit()">Cadastrar</button>
+    </form>
+</main>
+

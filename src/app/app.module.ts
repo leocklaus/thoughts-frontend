@@ -13,6 +13,7 @@ import { UserSearchDetailsComponent } from './search-page/user-search-details/us
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './shared/auth/auth-interceptor.interceptor';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthInterceptorInterceptor } from './shared/auth/auth-interceptor.inter
     ThoughtDetailsComponent,
     SearchPageComponent,
     UserSearchDetailsComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
