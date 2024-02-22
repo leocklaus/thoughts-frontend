@@ -11,6 +11,10 @@ import { likeEvent } from '../models/likeEvent';
   styleUrls: ['./thought-details.component.scss']
 })
 export class ThoughtDetailsComponent implements OnInit {
+  
+  getProfilePicture(username: String) {
+    return `http://localhost:8080/api/v1/users/pictures/${username}/profile`
+  }
 
   thoughtId!: string;
   thoughtData!: thought;

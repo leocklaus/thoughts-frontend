@@ -1,6 +1,6 @@
 <section>
     <div class="profile-picture">
-        <img src="../../../assets/profilepicture.jpg" alt="profile">
+        <img [src]="getProfilePicture()" alt="profile">
     </div>
     <form [formGroup]="thoughtForm">
         <div class="form-content">

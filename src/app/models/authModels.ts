@@ -5,6 +5,7 @@ export type loginData = {
 
 export type loginOutput = {
     token: string,
+    username: string
 }
 
 export type userRegister = {
@@ -17,5 +18,9 @@ export type userRegister = {
     bio: string
 }
 
+export type previousData = {
+    token: string,
+    username: string
+  }
 
 

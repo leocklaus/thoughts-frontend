@@ -5,8 +5,9 @@ import { UserDetailsPageComponent } from './user-details/user-details-page/user-
 import { ThoughtDetailsComponent } from './thought-details/thought-details.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { authGuard, loginRegisterGuard } from './shared/auth/auth.guard';
+import { authGuard, loginRegisterGuard, loginWelcomeGuard } from './shared/auth/auth.guard';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
     path: "register",
     component: RegisterPageComponent,
     canActivate: [loginRegisterGuard]
+  },
+  {
+    path: "welcome",
+    component: WelcomePageComponent,
+    canActivate: [loginRegisterGuard, loginWelcomeGuard]
   },
   {
     path: "",

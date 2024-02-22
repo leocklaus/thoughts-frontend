@@ -1,0 +1,19 @@
+<div [style.width]="imageWidth() + 'px'" class="image-upload">
+    <img 
+        [src]="imageSource()" 
+        alt="Profile Picture"
+        [height]="imageHeight()"
+        [width]="imageWidth()"
+    >
+    <input
+        #inputField
+        hidden
+        type="file"
+        (change)="fileSelected($event)"
+        (click)="inputField.value = ''"
+      />
+      <button mat-raised-button (click)="inputField.click()">
+        Select Photo
+      </button>
+</div>
+

@@ -1,0 +1,4 @@
+<main>
+    <app-image-control [width]=200 [height]=200 (imageReady)="handleImageReady($event)" />
+    <button [disabled]="!canSubmit()" (click)="handleSubmit()">Enviar</button>
+</main>

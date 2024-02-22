@@ -39,6 +39,10 @@ export class UserSearchDetailsComponent {
     return user.firstName + " " + user.lastName;
   }
 
+  gerProfilePicture(user: userDetails) {
+    return `http://localhost:8080/api/v1/users/pictures/${user.username}/profile"`
+  }
+
   handleNextPage(){
     
   }

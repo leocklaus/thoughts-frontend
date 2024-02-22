@@ -4,7 +4,7 @@
             <div class="wrapper" (click)="openUserDetails(user.username)">
                 <div class="profile-picture" (click)="stopPropagation($event)">
                     <a routerLink="/{{user.username}}">
-                        <img src="../../../assets/profilepicture.jpg" alt="profile">
+                        <img [src]="gerProfilePicture(user)" alt="profile">
                     </a>
                 </div>
                 <div class="info">

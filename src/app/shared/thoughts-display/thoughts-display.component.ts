@@ -86,6 +86,10 @@ export class ThoughtsDisplayComponent {
       this.router.navigate([`/${username}/thought/${thoughtId}`])
     }
 
+    gerProfilePicture(username: String) {
+      return `http://localhost:8080/api/v1/users/pictures/${username}/profile`
+    }
+
   stopPropagation(event: Event){
     event.stopPropagation();
   }

@@ -14,6 +14,11 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from './shared/auth/auth-interceptor.interceptor';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ImageControlComponent } from './welcome-page/image-control/image-control.component';
+import { CropperDialogComponent } from './welcome-page/cropper-dialog/cropper-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     SearchPageComponent,
     UserSearchDetailsComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    WelcomePageComponent,
+    ImageControlComponent,
+    CropperDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +40,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     UserDetailsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule,
+    ImageCropperModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true },

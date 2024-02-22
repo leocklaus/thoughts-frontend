@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs';
-import { loginData, loginOutput, userRegister } from 'src/app/models/authModels';
+import { loginData, loginOutput, previousData, userRegister } from 'src/app/models/authModels';
 import { jwtDecode } from 'jwt-decode'; 
 
 @Injectable({
@@ -23,8 +23,25 @@ export class AuthService {
     return token && !this.isExpired() ? true: false;
   }
 
+  canWelcome():boolean{
+    let prevToken = window.localStorage.getItem("prev_token");
+
+    return prevToken? true:false;
+  }
+
   getToken(){
     return window.localStorage.getItem("token");
+  }
+
+  getUsername(){
+    return window.localStorage.getItem("username");
+  }
+
+  getPreviousData():previousData{
+    return {
+      token: window.localStorage.getItem("prev_token") as string,
+      username: this.getUsername() as string
+    }
   }
 
   isExpired(){
@@ -60,16 +77,28 @@ export class AuthService {
     ;
   }
 
+  handleRegister(data: loginOutput){
+    let token = data.token;
+    let { exp } = jwtDecode(token);
+    window.localStorage.setItem("prev_token", token);
+    window.localStorage.setItem("prev_expDate", `${exp}`);
+    window.localStorage.setItem("username", data.username);
+  }
+
   handleLogin(data: loginOutput){
+    window.localStorage.removeItem("prev_token");
+    window.localStorage.removeItem("prev_expDate");
     let token = data.token;
     let { exp } = jwtDecode(token);
     window.localStorage.setItem("token", token);
     window.localStorage.setItem("expDate", `${exp}`);
+    window.localStorage.setItem("username", data.username);
   }
 
   logout(){
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("expDate");
+    window.localStorage.removeItem("username");
   }
 
 }

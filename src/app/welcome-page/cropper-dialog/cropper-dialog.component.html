@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>
+    Por favor, recorte a foto:
+</h1>
+
+<div mat-dialog-content>
+    <image-cropper
+        [maintainAspectRatio]="true"
+        [aspectRatio]="data.width / data.height"
+        [resizeToHeight]="data.height"
+        [resizeToWidth]="data.width"
+        [onlyScaleDown]="true"
+        [imageFile]="data.image"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+</div>
+
+<div mat-dialog-actions class="buttons">
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-button [mat-dialog-close]="result()" cdkFocusInitial>
+      Done
+    </button>
+</div>

@@ -2,7 +2,7 @@
     <section class="thought">
         <div class="thought-header">
             <div class="profile-picture">
-                <a routerLink="/{{thoughtData.username}}"><img src="../../../assets/profilepicture.jpg" alt="profile"></a>
+                <a routerLink="/{{thoughtData.username}}"><img [src]="getProfilePicture(thoughtData.username)" alt="profile"></a>
             </div>
             <div class="header-text">
                 <span class="name"><a routerLink="/{{thoughtData.username}}">{{getFullName()}}</a></span>

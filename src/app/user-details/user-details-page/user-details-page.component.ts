@@ -13,6 +13,10 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class UserDetailsPageComponent implements OnInit{
 
+getProfilePicture(username: string) {
+  return `http://localhost:8080/api/v1/users/pictures/${username}/profile`
+}
+
   postsContent!: thought[];
   postsPagination!: pagination;
   commentsContent!: thought[];

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { thought } from 'src/app/models/thought';
 import { thoughtInput } from 'src/app/models/thoughtInput';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { ThoughtServiceService } from 'src/app/shared/services/thought-service.service';
 
 @Component({
@@ -13,7 +14,11 @@ export class ThoughtFormComponent {
 
   @Output() postEvent = new EventEmitter<thought>();
 
-  constructor(private thoughtService: ThoughtServiceService){}
+  username!: string;
+
+  constructor(private thoughtService: ThoughtServiceService, private authService:AuthService){
+    this.username = authService.getUsername() as string;
+  }
 
   thoughtForm = new FormGroup({
     content: new FormControl("", [
@@ -57,6 +62,10 @@ export class ThoughtFormComponent {
 
   checkValid():boolean{
     return this.thoughtForm.invalid
+  }
+
+  getProfilePicture(){
+    return `http://localhost:8080/api/v1/users/pictures/${this.username}/profile`
   }
 
 }

@@ -6,6 +6,7 @@ import { UserService } from '../shared/services/user.service';
 import { AuthService } from '../shared/auth/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -57,8 +58,8 @@ export class RegisterPageComponent {
   }
 
   handleRegisterSucces(data: loginOutput): void {
-    this.authService.handleLogin(data);
-    this.router.navigate(["/"]);
+    this.authService.handleRegister(data);
+    this.router.navigate(["/welcome"]);
   }
 
 

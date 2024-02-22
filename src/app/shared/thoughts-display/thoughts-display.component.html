@@ -4,7 +4,7 @@
             <div class="wrapper" (click)="openThoughtDetails(thought.uuid, thought.username)">
             <div class="profile-picture" (click)="stopPropagation($event)">
                 <a routerLink="/{{thought.username}}">
-                    <img src="../../../assets/profilepicture.jpg" alt="profile">
+                    <img [src]="gerProfilePicture(thought.username)" alt="profile">
                 </a>
             </div>
             <div class="thought">

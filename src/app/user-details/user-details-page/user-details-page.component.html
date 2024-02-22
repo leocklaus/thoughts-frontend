@@ -11,7 +11,7 @@
         </div>
         <div class="cover">
             <div class="profile-picture">
-                <img src="../../../assets/profilepicture.jpg" alt="Profile Picture">
+                <img [src]="getProfilePicture(userDetails.username)" alt="Profile Picture">
             </div>
             <div class="cover-button">
                 <button>Editar Perfil</button>
