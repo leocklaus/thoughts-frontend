@@ -8,6 +8,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { authGuard, loginRegisterGuard, loginWelcomeGuard } from './shared/auth/auth.guard';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { UserDetailsEditPageComponent } from './user-details/user-details-edit-page/user-details-edit-page.component';
 
 const routes: Routes = [
   {
@@ -48,9 +49,18 @@ const routes: Routes = [
   },
   {
     path: "",
+    canActivate: [authGuard],
     children: [{
       path: ":user",
       component: UserDetailsPageComponent
+    }]
+  },
+  {
+    path: "",
+    children: [{
+      path: ":user/edit",
+      component: UserDetailsEditPageComponent,
+      pathMatch: 'full'
     }]
   },
   {

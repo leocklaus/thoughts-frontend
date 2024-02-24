@@ -1,0 +1,30 @@
+<main>
+    <section class="header">
+        <div class="header-bar">
+            <div class="header-bar-arrow">
+                <ng-icon [name]="'bootstrapArrowLeft'"></ng-icon>
+            </div>
+            <div class="header-bar-content">
+                <span class="header-bar-username">@{{userDetails.username}}</span>
+            </div>
+        </div>
+        <div class="cover">
+            <div class="profile-picture">
+                <img [src]="getProfilePicture(userDetails.username)" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <form class="user-details" [formGroup]="editForm">
+            <label for="first-name">Nome:</label>
+            <input type="text" name="first-name" formControlName="firstName">
+            <label for="last-name">Sobrenome:</label>
+            <input type="text" name="last-name" formControlName="lastName">
+            <label for="birthday">Aniversário</label>
+            <input type="text" name="birthday" id="" formControlName="birthDay">
+            <label for="bio">Bio</label>
+            <textarea name="bio" id="" cols="30" rows="10" formControlName="bio"></textarea>
+            <button>Atualizar</button>
+        </form>
+    </section>
+</main>
