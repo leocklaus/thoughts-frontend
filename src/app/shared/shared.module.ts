@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { ThoughtsDisplayComponent } from './thoughts-display/thoughts-display.component'
 import { NgIconsModule } from '@ng-icons/core';
-import { bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, bootstrapArrowLeft, bootstrapSearch } from '@ng-icons/bootstrap-icons';
+import { bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, bootstrapArrowLeft, bootstrapSearch, bootstrapCamera } from '@ng-icons/bootstrap-icons';
 
 
 
@@ -18,7 +18,7 @@ import { bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, b
   imports: [
     CommonModule,
     RouterModule,
-    NgIconsModule.withIcons({ bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, bootstrapArrowLeft, bootstrapSearch })
+    NgIconsModule.withIcons({ bootstrapChat, bootstrapChatFill, bootstrapHeart, bootstrapHeartFill, bootstrapArrowLeft, bootstrapSearch, bootstrapCamera})
   ],
   exports: [
     NavbarComponent,

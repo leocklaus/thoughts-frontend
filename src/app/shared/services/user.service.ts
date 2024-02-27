@@ -4,6 +4,7 @@ import { take } from 'rxjs';
 import { responsePage } from 'src/app/models/responsePaged';
 import { userDetails, userResponse } from 'src/app/models/userDetails';
 import { AuthService } from '../auth/auth.service';
+import { editUser } from 'src/app/models/authModels';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,15 @@ export class UserService {
     }}).pipe(
       take(1)
     )
+  }
+
+  editUser(data:editUser, username:string){
+    let payload = JSON.stringify(data);
+
+    return this.http.put<userDetails>(`${this.API}/${username}`, payload, this.httpPostOptions)
+      .pipe(
+        take(1)
+      )
+    ;
   }
 }

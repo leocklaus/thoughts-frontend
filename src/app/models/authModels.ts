@@ -23,4 +23,11 @@ export type previousData = {
     username: string
   }
 
+  export type editUser = {
+    firstName: string,
+    lastName: string,
+    birthday: string,
+    bio: string
+}
+
 

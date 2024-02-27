@@ -20,4 +20,24 @@ export class PhotoService {
       take(1)
     );
   }
+
+  postProfilePictureLogged(form: FormData, username: String){
+
+    const headers = new HttpHeaders({ 'enctype': 'multipart/form-data'});
+
+    return this.http.put(this.API + username + "/profile", form, {headers: headers})
+    .pipe(
+      take(1)
+    );
+  }
+
+  postCoverPictureLogged(form: FormData, username: String){
+
+    const headers = new HttpHeaders({ 'enctype': 'multipart/form-data'});
+
+    return this.http.put(this.API + username + "/cover", form, {headers: headers})
+    .pipe(
+      take(1)
+    );
+  }
 }

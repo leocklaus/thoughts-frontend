@@ -2,19 +2,19 @@
     <section class="header">
         <div class="header-bar">
             <div class="header-bar-arrow">
-                <ng-icon [name]="'bootstrapArrowLeft'"></ng-icon>
+                <a href="/"><ng-icon [name]="'bootstrapArrowLeft'"></ng-icon></a>
             </div>
             <div class="header-bar-content">
                 <span class="header-bar-username">@{{userDetails.username}}</span>
                 <span class="header-bar-posts-qty">{{getPostsQtyFormated()}}</span>
             </div>
         </div>
-        <div class="cover">
+        <div class="cover" [style.background-image]="'url(' + getCoverPicture() + ')'">
             <div class="profile-picture">
                 <img [src]="getProfilePicture(userDetails.username)" alt="Profile Picture">
             </div>
             <div class="cover-button">
-                <button>Editar Perfil</button>
+                <button (click)="handleEditProfile()">Editar Perfil</button>
             </div>
         </div>
         <div class="user-info">

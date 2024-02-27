@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { pagination } from 'src/app/models/responsePaged';
 import { tab } from 'src/app/models/tab';
 import { thought } from 'src/app/models/thought';
@@ -12,11 +12,16 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./user-details-page.component.scss']
 })
 export class UserDetailsPageComponent implements OnInit{
-
-getProfilePicture(username: string) {
-  return `http://localhost:8080/api/v1/users/pictures/${username}/profile`
-}
-
+  
+  
+  getCoverPicture() {
+    return `http://localhost:8080/api/v1/users/pictures/${this.username}/cover`
+  }
+  
+  getProfilePicture(username: string) {
+    return `http://localhost:8080/api/v1/users/pictures/${username}/profile`
+  }
+  
   postsContent!: thought[];
   postsPagination!: pagination;
   commentsContent!: thought[];
@@ -25,13 +30,13 @@ getProfilePicture(username: string) {
   likesPagination!: pagination;
   userDetails!: userDetails;
   username!: string;
-
-  constructor(private service: UserService, private route: ActivatedRoute){
+  
+  constructor(private service: UserService, private route: ActivatedRoute, private router: Router){
     this.route.paramMap.subscribe(params => {
       this.ngOnInit();
     })
   }
-
+  
   tabs:tab[] = [
     {
       id: 1,
@@ -47,7 +52,7 @@ getProfilePicture(username: string) {
     }
   ]
   activeTab:number = 1
-
+  
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('user') as string;
     this.service.getUserDetails(this.username)
@@ -94,20 +99,24 @@ getProfilePicture(username: string) {
       }
     })
   }
-
+  
 
   handleTabChange(tabId:number){
     this.activeTab = tabId;
   }
-
+  
   getPostsQtyFormated(){
     let postsQty = this.userDetails.postsCount;
     let sufix = postsQty == 1 ? 'thought' : 'thoughts';
     return postsQty + ` ${sufix}`
   }
-
+  
   getFullName(){
     return this.userDetails.firstName + " " + this.userDetails.lastName;
+  }
+  
+  handleEditProfile() {
+    this.router.navigate([`/${this.username}/edit`])
   }
 
 }

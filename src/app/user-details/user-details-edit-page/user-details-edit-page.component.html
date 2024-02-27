@@ -8,17 +8,29 @@
                 <span class="header-bar-username">@{{userDetails.username}}</span>
             </div>
         </div>
-        <div class="cover">
+        <div class="cover" [style.background-image]="'url(' + imageCoverSource() + ')'">
+            <input
+                #inputCover
+                hidden
+                type="file"
+                (change)="coverFileSelected($event)"
+                (click)="inputCover.value = ''"
+              />
+            <button mat-raised-button (click)="inputCover.click()">
+                <ng-icon [name]="'bootstrapCamera'" class="icon"></ng-icon>
+            </button>
             <div class="profile-picture">
                 <img [src]="imageSource()" alt="Profile Picture">
                 <input
-                #inputField
+                #inputProfile
                 hidden
                 type="file"
                 (change)="fileSelected($event)"
-                (click)="inputField.value = ''"
+                (click)="inputProfile.value = ''"
               />
-                <button mat-raised-button (click)="inputField.click()">Editar</button>
+                <button mat-raised-button (click)="inputProfile.click()">
+                    <ng-icon [name]="'bootstrapCamera'" class="icon"></ng-icon>
+                </button>
             </div>
         </div>
     </section>
@@ -32,7 +44,7 @@
             <input type="text" name="birthday" id="" formControlName="birthDay">
             <label for="bio">Bio</label>
             <textarea name="bio" id="" cols="30" rows="10" formControlName="bio"></textarea>
-            <button>Atualizar</button>
+            <button (click)="handleSubmit()">Atualizar</button>
         </form>
     </section>
 </main>
