@@ -1,4 +1,12 @@
 <main>
+    <div class="wrapper">
+    <div class="logo">
+        <img src="../../../assets/Thoughts.png" alt="logo">
+        <h1>Thoughts</h1>
+    </div>
+    <span>Seja bem vindo!!</span>
+    <span>Para começar, vamos escolher uma foto de usuário:</span>
     <app-image-control [width]=200 [height]=200 (imageReady)="handleImageReady($event)" />
     <button [disabled]="!canSubmit()" (click)="handleSubmit()">Enviar</button>
+</div>
 </main>

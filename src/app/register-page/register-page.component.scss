@@ -28,9 +28,16 @@ button {
     border-radius: 4px;
 }
 
-span.logo-text {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    font-size: 3rem;
     letter-spacing: .3rem;
+
+    img {
+        width: 40px;
+    }
 }
+
