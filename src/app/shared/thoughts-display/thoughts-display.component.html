@@ -15,7 +15,7 @@
                     <a routerLink="/{{thought.username}}">
                         <span class="username">{{thought.username}}</span>
                     </a>
-                    <span class="date">{{thought.createdAt}}</span>
+                    <span class="date">{{thought.createdAt | localDateTime}}</span>
                 </div>
                 <div class="thought-content">
                     {{thought.content}}
