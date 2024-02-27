@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs';
 import { userDetails } from 'src/app/models/userDetails';
 import { UserService } from 'src/app/shared/services/user.service';
+import { CropperDialogComponent, CropperDialogResult } from 'src/app/welcome-page/cropper-dialog/cropper-dialog.component';
 
 @Component({
   selector: 'app-user-details-edit-page',
@@ -46,8 +49,38 @@ export class UserDetailsEditPageComponent implements OnInit{
     return `http://localhost:8080/api/v1/users/pictures/${username}/profile`
   }
 
+  imageSource = computed(() => {
+    return this.croppedImage()?.imageUrl ?? this.getProfilePicture(this.username);
+  });
+
   getFullName(){
     return this.userDetails.firstName + " " + this.userDetails.lastName;
+  }
+
+  croppedImage = signal<CropperDialogResult | undefined>(undefined);
+
+  dialog = inject(MatDialog);
+
+  fileSelected(event: any) {
+    console.log("abriu");
+    const file = event.target?.files[0];
+    if (file) {
+      const dialogRef = this.dialog.open(CropperDialogComponent, {
+        data: {
+          image: file,
+          width: 140,
+          height: 140,
+        },
+        width: '500px',
+      });
+
+      dialogRef
+        .afterClosed()
+        .pipe(filter((result) => !!result))
+        .subscribe((result: CropperDialogResult) => {
+          this.croppedImage.set(result);
+        });
+    }
   }
 
 }

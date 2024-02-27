@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { loginData, loginOutput } from '../models/authModels';
 import { AuthService } from '../shared/auth/auth.service';
@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit{
 
   constructor(private authService: AuthService, private router:Router){}
+
+  ngOnInit(): void {
+    this.authService.clearAuthLocalStorage();
+  }
 
   loginForm = new FormGroup({
     username: new FormControl("", [Validators.required]),

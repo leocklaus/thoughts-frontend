@@ -10,7 +10,15 @@
         </div>
         <div class="cover">
             <div class="profile-picture">
-                <img [src]="getProfilePicture(userDetails.username)" alt="Profile Picture">
+                <img [src]="imageSource()" alt="Profile Picture">
+                <input
+                #inputField
+                hidden
+                type="file"
+                (change)="fileSelected($event)"
+                (click)="inputField.value = ''"
+              />
+                <button mat-raised-button (click)="inputField.click()">Editar</button>
             </div>
         </div>
     </section>

@@ -4,6 +4,7 @@ import { UserDetailsPageComponent } from './user-details-page/user-details-page.
 import { SharedModule } from '../shared/shared.module';
 import { UserDetailsEditPageComponent } from './user-details-edit-page/user-details-edit-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
     UserDetailsPageComponent

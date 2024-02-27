@@ -101,4 +101,8 @@ export class AuthService {
     window.localStorage.removeItem("username");
   }
 
+  clearAuthLocalStorage(){
+    this.logout();
+  }
+
 }
