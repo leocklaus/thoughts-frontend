@@ -58,6 +58,7 @@ article:hover {
     display: flex;
     gap: 12px;
     margin-bottom: 4px;
+    align-items: center;
 }
 
 span.name {
@@ -99,4 +100,21 @@ span.date {
 .pagination {
     display: flex;
     justify-content: center;
+
+    button{
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: var(--light-blue);
+        border: none;
+        color: white;
+
+        &:hover{
+            background-color: var(--extra-light-blue);
+        }
+
+        &:disabled{
+            background-color: var(--extra-light-blue);
+        }
+    }
 }

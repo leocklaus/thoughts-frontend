@@ -1,4 +1,9 @@
 <main>
+    <section>
+    <div class="logo">
+        <img src="../../../assets/Thoughts.png" alt="logo">
+        <h1>Thoughts</h1>
+    </div>
     <form [formGroup]="loginForm">
         <label for="username">Username</label>
         <input type="text" name="username" formControlName="username">
@@ -7,5 +12,6 @@
         <button (click)="onSubmit()" [disabled]="checkInvalid()">Enviar</button>
         <span>Não tem uma conta? <a href="/register">Cadastre-se</a></span>
     </form>
+    </section>
 </main>
 

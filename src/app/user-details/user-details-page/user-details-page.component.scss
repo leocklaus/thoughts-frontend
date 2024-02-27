@@ -15,7 +15,7 @@ ul {
     list-style: none;
     display: flex;
     justify-content: space-between;
-    background-color: aquamarine;
+    background-color: var(--light-blue);
 }
 
 li {
@@ -26,7 +26,7 @@ li {
 }
 
 li:hover {
-    background-color: rgb(158, 245, 216);
+    background-color: var(--extra-light-blue);
 }
 
 .menu-item {
@@ -42,7 +42,7 @@ a {
 }
 
 .active {
-    border-bottom: 4px solid rgb(35, 226, 162) ;
+    border-bottom: 4px solid var(--base-color) ;
 }
 
 section.header {
@@ -54,7 +54,7 @@ section.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: aqua;
+    background-color: var(--light-blue);
     height: 44px;
     padding: 0 8px;
 }
@@ -120,7 +120,7 @@ section.header {
 .cover-button button {
     padding: 8px;
     border-radius: 16px;
-    border: 2px solid aqua;
+    border: 2px solid var(--light-blue);
     background-color: white;
     cursor: pointer;
 }

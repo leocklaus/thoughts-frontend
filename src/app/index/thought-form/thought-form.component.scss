@@ -29,6 +29,24 @@ section {
     span.full{
         color: red;
     }
+
+    button{
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: var(--light-blue);
+        border: none;
+        color: white;
+
+        &:hover{
+            background-color: var(--extra-light-blue);
+        }
+
+        &:disabled{
+            background-color: var(--extra-light-blue);
+        }
+    }
+
     
 }
 

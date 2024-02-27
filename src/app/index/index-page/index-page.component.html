@@ -8,7 +8,7 @@
     </app-thought-form>
     <nav>
         <ul>
-            <li *ngFor="let tab of tabs">
+            <li *ngFor="let tab of tabs" [class.active]="activeTab == tab.id">
                 <div (click)="handleTabChange(tab.id)" class="menu-item">{{tab.name}}</div>
             </li>
         </ul>
