@@ -14,7 +14,17 @@
                 <img [src]="getProfilePicture(userDetails.username)" alt="Profile Picture">
             </div>
             <div class="cover-button">
-                <button (click)="handleEditProfile()">Editar Perfil</button>
+                <button *ngIf="userDetails.loggedUser; else elseButton" 
+                (click)="handleEditProfile()">
+                    Editar Perfil
+                </button>
+                <ng-template #elseButton>
+                    <button *ngIf="userDetails.followedByLoggedUser; else followButton" 
+                    (click)="handleUnfollow()">Seguindo</button>
+                    <ng-template #followButton>
+                        <button (click)="handleFollow()">Seguir</button>
+                    </ng-template>
+                </ng-template>
             </div>
         </div>
         <div class="user-info">
@@ -44,19 +54,22 @@
         <app-thoughts-display
         *ngSwitchCase=1 
         [content]="postsContent" 
-        [page]="postsPagination" 
+        [page]="postsPagination"
+        (toogleLikeEvent)="handleLikeEvent($event, postsContent)" 
         >
         </app-thoughts-display>
         <app-thoughts-display
         *ngSwitchCase=2 
         [content]="commentsContent" 
-        [page]="commentsPagination" 
+        [page]="commentsPagination"
+        (toogleLikeEvent)="handleLikeEvent($event, commentsContent)" 
         >
         </app-thoughts-display>
         <app-thoughts-display
         *ngSwitchCase=3 
         [content]="likesContent" 
-        [page]="likesPagination" 
+        [page]="likesPagination"
+        (toogleLikeEvent)="handleLikeEvent($event, likesContent)" 
         >
         </app-thoughts-display>
     </section>

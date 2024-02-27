@@ -63,7 +63,6 @@ export class IndexPageComponent implements OnInit{
   }
 
   handleLikeEvent($event: likeEvent) {
-    console.log($event)
     for(let i = 0; i <= this.content.length; i++){
       if(this.content[i].uuid == $event.uuid){
         this.content[i].likedByUser = $event.likedByUser;

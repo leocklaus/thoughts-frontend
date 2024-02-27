@@ -24,22 +24,22 @@ export class UserService {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getToken()})
   }
 
-  getUserPosts(){
-    return this.http.get<responsePage>(this.API + "/current/thoughts", this.httpOptions)
+  getUserPosts(username: string){
+    return this.http.get<responsePage>(this.API + "/" + username + '/thoughts', this.httpOptions)
     .pipe(
       take(1)
     )
   }
 
-  getUserReplies(){
-    return this.http.get<responsePage>(this.API + "/current/replies", this.httpOptions)
+  getUserReplies(username: string){
+    return this.http.get<responsePage>(this.API + "/" + username + "/replies", this.httpOptions)
     .pipe(
       take(1)
     )
   }
 
-  getLikedThoughts(){
-    return this.http.get<responsePage>(this.API + "/current/likes", this.httpOptions)
+  getLikedThoughts(username:string){
+    return this.http.get<responsePage>(this.API + "/" + username + "/likes", this.httpOptions)
     .pipe(
       take(1)
     )
@@ -68,5 +68,19 @@ export class UserService {
         take(1)
       )
     ;
+  }
+
+  followUser(uuid:string){
+    return this.http.put<void>(this.API + `/follow/${uuid}`, this.httpPostOptions)
+    .pipe(
+      take(1)
+    )
+  }
+
+  unfollowUser(uuid:string){
+    return this.http.delete<void>(this.API + `/follow/${uuid}`, this.httpPostOptions)
+    .pipe(
+      take(1)
+    )
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { likeEvent } from 'src/app/models/likeEvent';
 import { pagination } from 'src/app/models/responsePaged';
 import { tab } from 'src/app/models/tab';
 import { thought } from 'src/app/models/thought';
@@ -12,6 +13,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./user-details-page.component.scss']
 })
 export class UserDetailsPageComponent implements OnInit{
+
   
   
   getCoverPicture() {
@@ -59,7 +61,7 @@ export class UserDetailsPageComponent implements OnInit{
     .subscribe(data => {
       this.userDetails = data
     })
-    this.service.getUserPosts()
+    this.service.getUserPosts(this.username)
     .subscribe(data => {
       this.postsContent = data.content;
       this.postsPagination = {
@@ -72,7 +74,7 @@ export class UserDetailsPageComponent implements OnInit{
         empty: data.empty
       }
     })
-    this.service.getUserReplies()
+    this.service.getUserReplies(this.username)
     .subscribe(data => {
       this.commentsContent = data.content;
       this.commentsPagination = {
@@ -85,7 +87,7 @@ export class UserDetailsPageComponent implements OnInit{
         empty: data.empty
       }
     })
-    this.service.getLikedThoughts()
+    this.service.getLikedThoughts(this.username)
     .subscribe(data => {
       this.likesContent = data.content;
       this.likesPagination = {
@@ -103,6 +105,35 @@ export class UserDetailsPageComponent implements OnInit{
 
   handleTabChange(tabId:number){
     this.activeTab = tabId;
+  }
+
+  handleLikeEvent($event: likeEvent, data:thought[]) {
+    for(let i = 0; i <= data.length; i++){
+      if(data[i].uuid == $event.uuid){
+        data[i].likedByUser = $event.likedByUser;
+        if($event.likedByUser){
+          data[i].likesCount++;
+        }else{
+          data[i].likesCount--;
+        }  
+      }
+    }
+  }
+
+  handleFollow(){
+    this.service.followUser(this.userDetails.uuid)
+    .subscribe(()=>{
+      this.userDetails.followedByLoggedUser = true;
+      this.userDetails.followers++;
+    });
+  }
+
+  handleUnfollow(){
+    this.service.unfollowUser(this.userDetails.uuid)
+    .subscribe(()=>{
+      this.userDetails.followedByLoggedUser = false;
+      this.userDetails.followers--;
+    });
   }
   
   getPostsQtyFormated(){
